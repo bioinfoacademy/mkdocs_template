@@ -1,0 +1,694 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="This page documents everything that has been done/generated in this project">
+      
+      
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.0">
+    
+    
+      
+        <title>Primary Analysis - scRNA-seq on WT and Tg CD45hi cells from brain</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.33e2939f.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ef6f36e2.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#2094f3">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="stylesheets/extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="blue" data-md-color-accent="">
+  
+    
+    <script>function __prefix(e){return new URL(".",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#a-prepare-samplesheetcsv-file" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="." title="scRNA-seq on WT and Tg CD45hi cells from brain" class="md-header__button md-logo" aria-label="scRNA-seq on WT and Tg CD45hi cells from brain" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            scRNA-seq on WT and Tg CD45hi cells from brain
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Primary Analysis
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="." title="scRNA-seq on WT and Tg CD45hi cells from brain" class="md-nav__button md-logo" aria-label="scRNA-seq on WT and Tg CD45hi cells from brain" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    scRNA-seq on WT and Tg CD45hi cells from brain
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Primary Analysis
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="primary-analysis.html" class="md-nav__link md-nav__link--active">
+        Primary Analysis
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#a-prepare-samplesheetcsv-file" class="md-nav__link">
+    A. Prepare samplesheet.csv file
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#b-generate-fastq-files-from-bcl-files-and-demultiplex-at-sample-level" class="md-nav__link">
+    B. Generate fastq files from BCL files (AND Demultiplex at sample level)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#c-cell-count-at-individual-mouse-level" class="md-nav__link">
+    C. Cell count at individual mouse level
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#d-cell-count-at-sample-level" class="md-nav__link">
+    D. Cell count at sample level
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#e-combine-cell-counts-using-sample-level-counts-to-get-a-combined-loupe-file" class="md-nav__link">
+    E. Combine Cell counts (using sample level counts), to get a combined loupe file
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#software" class="md-nav__link">
+    Software
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    References
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="quality-control.html" class="md-nav__link">
+        Quality Control
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="normalization.html" class="md-nav__link">
+        Normalization
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="clustering.html" class="md-nav__link">
+        Clustering
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="differential-expression.html" class="md-nav__link">
+        Differential Expression
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="annotation.html" class="md-nav__link">
+        Annotation
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  <h1>Primary Analysis</h1>
+                
+                <h3 id="a-prepare-samplesheetcsv-file">A. Prepare samplesheet.csv file</h3>
+<ol>
+<li>Current <a href="../../Protocol/samplesheet.csv">samplesheet.csv</a> file is a comma separated text file. This file could be edited in a plain text editor or a spreadsheet program. The file content is given below;
+<div class="highlight"><pre><span></span><code>Lane,Sample,Index
+*,WT_Gex,SI-GA-C1
+*,Tg_Gex,SI-GA-D1
+*,WT_Barcode,SI-GA-E1
+*,Tg_Barcode,SI-GA-F1
+</code></pre></div>
+In the Lane column, * specifies all lanes.
+Sample column specifies sample names.
+Index column specifies Index used for these samples (this info comes from <a href="../../Protocol/HS017_RUN_info.pdf">HS017_Run_info.pdf</a>)</li>
+</ol>
+<h3 id="b-generate-fastq-files-from-bcl-files-and-demultiplex-at-sample-level">B. Generate fastq files from BCL files (AND Demultiplex at sample level)</h3>
+<ol>
+<li>Login to biowulf and request an interactive node using the below 'sinteractive' command, with 32 cores, 60gb RAM and 300gb of storage;
+<div class="highlight"><pre><span></span><code>sinteractive --cpus-per-task=32 --mem=60g --gres=lscratch:300
+</code></pre></div></li>
+<li>Once the interacive node is assigned, run the below command to load the cellranger module;
+<div class="highlight"><pre><span></span><code># Change to the working directory
+cd /data/Shih_Lab/scRNAseqNilisha
+# Load the cellranger module
+module load cellranger
+</code></pre></div></li>
+<li>
+<p>After loading the cellranger module, run the below command to generate fastq files;
+<div class="highlight"><pre><span></span><code>cellranger mkfastq --id=brainfastq --run=RawData/BCL --csv=Protocol/samplesheet.csv --localcores=$SLURM_CPUS_PER_TASK --localmem=34
+</code></pre></div>
+The mkfastq is the subcommand to generate fastq files from BCL files.<br>
+--id specifies the 'brainfastq' as a output folder (will be created new)<br>
+--run specifies the location of the BCL folder that contains the raw BCL and associated files<br>
+--csv specifies the samplesheet.csv file that we created in step A above<br>
+--localcores specifies the number of cpus to use - same as that of the interactive node cpus<br>
+--localmem specifies the 34 GB for memory</p>
+</li>
+<li>
+<p>The mkfastq run takes about one hour to complete. Once the run is complete, the fastq files are available in the <a href="../../RawData/mkfastq-output/outs/fastq_path/HCJY2DRXY/">outs/fastq_path/HCJY2DRXY/ folder within the output directory specified in the step #3</a>.<br></p>
+</li>
+</ol>
+<p>A preliminary Report of the flow cell summary and lane summary for each of the sample indexes is available in this <a href="../../RawData/mkfastq-output/outs/fastq_path/Reports/html/index.html">html</a> file</p>
+<h3 id="c-cell-count-at-individual-mouse-level">C. Cell count at individual mouse level</h3>
+<ol>
+<li>Prepare the multiplex_feature_reference.csv file<ul>
+<li>The multiplex_feature_reference.csv is a comman separated text file.</li>
+<li>The multiplex_feature_reference.csv lists the hash tags (barcodes) used for each mouse.</li>
+<li>Each mouse is labelled with a unique id (like WT_B1), a name (could be the same as id), read and pattern (which are standard for TotalSeqB protocol tags).</li>
+<li>The multiplex_feature_rference.csv file for this run is located in the <a href="../../Protocol">Protocol</a> folder. </li>
+<li>The contents of multiplex_feature_reference.csv for this run is given below.
+<div class="highlight"><pre><span></span><code>id,name,read,pattern,sequence,feature_type
+WT_B1,WT_B1,R2,5PNNNNNNNNNN(BC),ACCCACCAGTAAGAC,Multiplexing Capture
+WT_B2,WT_B2,R2,5PNNNNNNNNNN(BC),GGTCGAGAGCATTCA,Multiplexing Capture
+WT_B5,WT_B5,R2,5PNNNNNNNNNN(BC),CTTTGTCTTTGTGAG,Multiplexing Capture
+WT_B6,WT_B6,R2,5PNNNNNNNNNN(BC),TATGCTGCCACGGTA,Multiplexing Capture
+Tg_B3,Tg_B3,R2,5PNNNNNNNNNN(BC),CTTGCCGCATGTCAT,Multiplexing Capture
+Tg_B4,Tg_B4,R2,5PNNNNNNNNNN(BC),AAAGCATTCTTCACG,Multiplexing Capture
+Tg_B7,Tg_B7,R2,5PNNNNNNNNNN(BC),GAGTCTGCCAGTATC,Multiplexing Capture
+Tg_B8,Tg_B8,R2,5PNNNNNNNNNN(BC),TATAGAACGCCAGGC,Multiplexing Capture
+</code></pre></div></li>
+</ul>
+</li>
+<li>Prepare the multiplex_config_new.csv file<ul>
+<li>The multiplex_config.csv is text file, with three sections (gene-expression, libraries, samples).</li>
+<li>The gene-expression section has information about the reference genome location, expected number of cells and the hash-tag (cmo-set) reference file (as described in #1 above) location</li>
+<li>The libraries section describes the fastq files folders for each of the sample</li>
+<li>The sample section describes the sample ids for each of the mouse (can use the same ids for sample_ids, cmo_ids and description</li>
+<li>The file used for this analysis is available in the <a href="../../Protocol">Protocol</a> folder</li>
+<li>The contents of the multiplex_config.csv file used for this analysis is given below
+<div class="highlight"><pre><span></span><code>[gene-expression]
+reference,/fdb/cellranger/refdata-gex-mm10-2020-A
+expect-cells,6000
+cmo-set,/data/Shih_Lab/scRNAseqNilisha/Protocol/multiplex_feature_reference.csv
+
+[libraries]
+fastq_id,fastqs,feature_types
+WT_Gex,/data/Shih_Lab/scRNAseqNilisha/RawData/mkfastq-output/outs/fastq_path/HCJY2DRXY/WT_Gex,Gene Expression
+Tg_Gex,/data/Shih_Lab/scRNAseqNilisha/RawData/mkfastq-output/outs/fastq_path/HCJY2DRXY/Tg_Gex,Gene Expression
+WT_Barcode,/data/Shih_Lab/scRNAseqNilisha/RawData/mkfastq-output/outs/fastq_path/HCJY2DRXY/WT_Barcode,Multiplexing Capture
+Tg_Barcode,/data/Shih_Lab/scRNAseqNilisha/RawData/mkfastq-output/outs/fastq_path/HCJY2DRXY/Tg_Barcode,Multiplexing Capture
+
+[samples]
+sample_id,cmo_ids,description
+WT_B1,WT_B1,WT_B1
+WT_B2,WT_B2,WT_B2
+WT_B5,WT_B5,WT_B5
+WT_B6,WT_B6,WT_B6
+Tg_B3,Tg_B3,Tg_B3
+Tg_B4,Tg_B4,Tg_B4
+Tg_B7,Tg_B7,Tg_B7
+Tg_B8,Tg_B8,Tg_B8
+</code></pre></div></li>
+</ul>
+</li>
+<li>Login to biowulf and request an interactive node using the below 'sinteractive' command, with 32 cores, 64gb RAM and 300gb of storage;
+<div class="highlight"><pre><span></span><code>sinteractive --cpus-per-task=32 --mem=64g --gres=lscratch:300
+</code></pre></div></li>
+<li>Once the interacive node is assigned, run the below command to load the cellranger module;
+<div class="highlight"><pre><span></span><code># Change to the working directory
+cd /data/Shih_Lab/scRNAseqNilisha
+# Load the cellranger module
+module load cellranger
+</code></pre></div></li>
+<li>
+<p>After loading the cellranger module, run the below command to generate cell counts;
+<div class="highlight"><pre><span></span><code>cellranger multi --id=wttgbrain_hto_demultiplexed --csv=Protocol/multiplex_config.csv --jobmode=slurm --maxjobs=25
+</code></pre></div>
+The multi is the subcommand to demultiplex based on HTO samples.<br>
+--id specifies the 'wttgbrain_hto_demultiplexed' as a output folder (will be created new)<br>
+--csv specifies the location of the multiplex_config.csv file (Protocol/multiplex_config.csv)<br>
+--jobmode=slurm specifies that the job needs to be run in batch mode<br>
+--maxjobs specifies the number of jobs allowed for this batch run (25 in our run)<br></p>
+</li>
+<li>
+<p>The cellranger multi runs for a few hours to complete. Once the run is complete, the output files are available in the <a href="../../Results/wttgbrain_hto_demultiplexed/outs/per_sample_outs">outs/per_sample_outs folder within the 'wttgbrain_hto_demultiplexed' directory specified in the step #5</a>.<br></p>
+</li>
+</ol>
+<p>A preliminary Report with the count summary, alignment quality, some preliminary analysis are available in the <a href="../../Results/wttgbrain_hto_demultiplexed/outs/per_sample_outs">per_sample_outs</a> folder, within each of the sample folders. For example, this <a href="../../Results/wttgbrain_hto_demultiplexed/outs/per_sample_outs/Tg_B3/web_summary.html">web_summary.html</a> file is available in the <a href="../../Results/wttgbrain_hto_demultiplexed/outs/per_sample_outs/Tg_B3">per_sample_outs/Tg_B3</a> folder<br>
+The matrix files that we will use in the downstream analysis in seurat is also available in the per samples folder.</p>
+<h3 id="d-cell-count-at-sample-level">D. Cell count at sample level</h3>
+<ol>
+<li>Prepare libraryTG.csv and libraryWT.csv files (these are comma separated text files)<ul>
+<li>The libraryTG.csv describes the location of the fastq files folder for the TG sample, the corresponding sample types (Tg) and the library preparation type (gene expression or antibody capture)</li>
+<li>The libraryTG.csv for this run is located <a href="../../Protocol/libraryTG.csv">here</a> in the Protocol <a href="../../Protocol">folder</a></li>
+<li>Similarly, prepare the libraryWT.csv file for the WT sample.</li>
+<li>The contents of the libraryTG.csv file and libraryWT.csv are given below. </li>
+</ul>
+</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Since we are going to the data only at the samples level (wt vs tg), we do not have to include the antibody capture information in this run, but we are including it just in case.</p>
+</div>
+<div class="highlight"><pre><span></span><code>fastqs,sample,library_type
+/data/Shih_Lab/scRNAseqNilisha/RawData/mkfastq-output/outs/fastq_path/HCJY2DRXY/WT_Barcode/,WT_Barcode,Antibody Capture
+/data/Shih_Lab/scRNAseqNilisha/RawData/mkfastq-output/outs/fastq_path/HCJY2DRXY/WT_Gex/,WT_Gex,Gene Expression
+</code></pre></div>
+<p><div class="highlight"><pre><span></span><code>fastqs,sample,library_type
+/data/Shih_Lab/scRNAseqNilisha/RawData/mkfastq-output/outs/fastq_path/HCJY2DRXY/Tg_Barcode/,Tg_Barcode,Antibody Capture
+/data/Shih_Lab/scRNAseqNilisha/RawData/mkfastq-output/outs/fastq_path/HCJY2DRXY/Tg_Gex/,Tg_Gex,Gene Expression
+</code></pre></div>
+2. Prepare a common feature_reference.csv file(this is a comma separated text file)<br></p>
+<ul>
+<li>The feature_reference.csv file describes the antibodies (hash tag) used to hash tag the individual mouse (like B1, B2 etc.), a name for the individual mouse (like WT_B1), and then the pattern R2,5PNNNNNNNNNN(BC) (this is specific to <a href="https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/latest/using/feature-bc-analysis">TotalSeq B protocol</a>, the actual Tag barcode sequence and the feature type (antibody capture)<br></li>
+<li>The feature_reference.csv for this run is located <a href="../../Protocol">here</a> in the Protocol <a href="../../Protocol">folder</a><br></li>
+<li>The contents of the feature_reference.csv file is given below.<br></li>
+</ul>
+<p><div class="highlight"><pre><span></span><code>id,name,read,pattern,sequence,feature_type
+WT_B1,WT_B1,R2,5PNNNNNNNNNN(BC),ACCCACCAGTAAGAC,Antibody Capture
+WT_B2,WT_B2,R2,5PNNNNNNNNNN(BC),GGTCGAGAGCATTCA,Antibody Capture
+WT_B5,WT_B5,R2,5PNNNNNNNNNN(BC),CTTTGTCTTTGTGAG,Antibody Capture
+WT_B6,WT_B6,R2,5PNNNNNNNNNN(BC),TATGCTGCCACGGTA,Antibody Capture
+Tg_B3,Tg_B3,R2,5PNNNNNNNNNN(BC),CTTGCCGCATGTCAT,Antibody Capture
+Tg_B4,Tg_B4,R2,5PNNNNNNNNNN(BC),AAAGCATTCTTCACG,Antibody Capture
+Tg_B7,Tg_B7,R2,5PNNNNNNNNNN(BC),GAGTCTGCCAGTATC,Antibody Capture
+Tg_B8,Tg_B8,R2,5PNNNNNNNNNN(BC),TATAGAACGCCAGGC,Antibody Capture
+</code></pre></div>
+3. Prepare the swarm file containing the commands for both the samples (WT and TG)<br></p>
+<ul>
+<li>This swarm file (saved as <a href="../../Tools">count.swarm</a>) is a text file with the below commands.</li>
+<li>The swarm file specifies the 'count' subcommand for cellranger, the output folder name (--id), path to the library file (--libraries), path to the reference transcriptome (--transcriptome), path to the feature reference file (--feature-ref), the expected number of cells (--expect-cells), the number of cores to use and the amount of memory to use.</li>
+</ul>
+<p><div class="highlight"><pre><span></span><code>cellranger count --id=WTbrain --libraries=/data/Shih_Lab/scRNAseqNilisha/Protocol/libraryWT.csv --transcriptome=/fdb/cellranger/refdata-gex-mm10-2020-A --feature-ref=/data/Shih_Lab/scRNAseqNilisha/Protocol/feature_reference_WT.csv --expect-cells=6000 --localcores=28 --localmem=64
+
+cellranger count --id=TGbrain --libraries=/data/Shih_Lab/scRNAseqNilisha/Protocol/libraryTG.csv --transcriptome=/fdb/cellranger/refdata-gex-mm10-2020-A --feature-ref=/data/Shih_Lab/scRNAseqNilisha/Protocol/feature_reference_TG.csv --expect-cells=6000 --localcores=28 --localmem=64
+</code></pre></div>
+4. Change to the Tools directory using the below command<br></p>
+<p><div class="highlight"><pre><span></span><code>cd /data/Shih_Lab/scRNAseqNilisha/Tools/
+</code></pre></div>
+5. Run the swarm job using the below command, specifying the swarm file name, memory (-g), threads (-t), scratch space (--gres) and the module cellranger;</p>
+<div class="highlight"><pre><span></span><code>swarm -f count.swarm -g 64 -t 28 --gres=lscratch:200 --module cellranger
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Note down your job id.</p>
+</div>
+<p>Check your job status using the "jobload" command or the squeue command;</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Replace the job id in the below command with your job id</p>
+</div>
+<p><div class="highlight"><pre><span></span><code>squeue --job 14354599
+</code></pre></div>
+6. Extend the swarm job running time using the below command;</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Replace the job id in the below command with your job id</p>
+</div>
+<p><div class="highlight"><pre><span></span><code>newwall --jobid 13558558 --time 36:00:00
+</code></pre></div>
+7. Output<br></p>
+<ul>
+<li>The cellranger count runs for a few hours to complete. Once the run is complete, the output files are available in the outs folder within the 'WTbrain' and 'TGbrain' directories specified in the swarm file. In this run we moved the WTbrain and TGbrain results folders to the <a href="../../Results">Results folder</a>.<br></li>
+<li>A preliminary Report with the count summary, alignment quality, some preliminary analysis are available in the respective outs folder in the <a href="../../Results/WTbrain/outs/web_summary.html">web_summary.html file</a><br></li>
+<li>The respective clustering file <a href="../../Results/WTbrain/outs/">(cloupe.cloupe)</a> based on the preliminary analysis is also available in the 'outs' folder, to visualize and explore the t-SNE and UMAP data.<br></li>
+<li>The matrix files that we will use in the downstream analysis in seurat is also available in the 'outs' folder.</li>
+</ul>
+<h3 id="e-combine-cell-counts-using-sample-level-counts-to-get-a-combined-loupe-file">E. Combine Cell counts (using sample level counts), to get a combined loupe file</h3>
+<ol>
+<li>
+<p>Prepare the aggr.csv file</p>
+<ul>
+<li>The aggr.csv is a comma separated text file.</li>
+<li>The aggr.csv lists the sample Id, path to the molecule_h5 file for each of the samples obtained from the Step D above (WT and TG) and the sample group (WT or TG)</li>
+<li>The aggr.csv file for this run is located in the <a href="../../Tools">Tools</a> folder. </li>
+<li>The contents of aggr.csv for this run is given below.
+<div class="highlight"><pre><span></span><code>sample_id,molecule_h5,SampleGroup
+WT,/data/Shih_Lab/scRNAseqNilisha/Results/WTbrain/outs/molecule_info.h5,WT
+TG,/data/Shih_Lab/scRNAseqNilisha/Results/TGbrain/outs/molecule_info.h5,TG
+</code></pre></div></li>
+</ul>
+</li>
+<li>
+<p>Login to biowulf and request an interactive node using the below 'sinteractive' command, with 32 cores, 64gb RAM and 300gb of storage;
+<div class="highlight"><pre><span></span><code>sinteractive --cpus-per-task=32 --mem=64g --gres=lscratch:300
+</code></pre></div></p>
+</li>
+<li>Once the interacive node is assigned, run the below command to load the cellranger module;
+<div class="highlight"><pre><span></span><code># Change to the working directory
+cd /data/Shih_Lab/scRNAseqNilisha
+# Load the cellranger module
+module load cellranger
+</code></pre></div></li>
+<li>
+<p>After loading the cellranger module, run the below command to combine the cell counts from WT and TG and generate the combined loupe file;
+<div class="highlight"><pre><span></span><code>cellranger aggr --id=WT_TG_combined --csv=Tools/aggr.csv
+</code></pre></div>
+The aggr is the subcommand to combine the sample counts from WT and TG results folders.<br>
+--id specifies the 'WT_TG' as a output folder (will be created new)<br>
+--csv specifies the location of the aggr.csv file (Tools/aggr.csv)<br></p>
+</li>
+<li>
+<p>The cellranger aggr runs for a few hours to complete. Once the run is complete, the output files are available in the <a href="../../Results/WT_TG_combined/outs/">outs folder within the 'WT_TG_combined' directory specified in the step #4 above</a>.<br></p>
+</li>
+</ol>
+<p>A preliminary Report with the count summary, alignment quality, some preliminary analysis are available in the <a href="../../Results/WT_TG_combined/outs/web_summary.html">web_summary.html</a> file is available in the <a href="../../Results/WT_TG_combined/outs">outs</a> folder<br>
+The combined loupe file is available in the <a href="../../Results/WT_TG_combined/outs/count">count</a> folder</p>
+<h3 id="software">Software</h3>
+<ol>
+<li>cellranger  6.0.0</li>
+<li>R 4.0.5</li>
+<li>mkdocs 1.1.2</li>
+</ol>
+<h3 id="references">References</h3>
+<ol>
+<li><a href="https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/latest/using/mkfastq">fastq generation</a></li>
+<li><a href="https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/latest/using/multi">Demultiplex and count</a></li>
+<li><a href="https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/latest/using/tutorial_ct">TotalSeq</a></li>
+<li><a href="https://hpc.nih.gov/apps/cellranger.html">CellRanger Biowulf</a></li>
+<li><a href="https://hpc.nih.gov/apps/swarm.html">Swarm Biowulf</a></li>
+</ol>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        <a href="index.html" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Home
+            </div>
+          </div>
+        </a>
+      
+      
+        <a href="quality-control.html" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Quality Control
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": ".", "features": "toc.integrate", "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "assets/javascripts/workers/search.fe42c31b.min.js", "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.d892486b.min.js"></script>
+      
+    
+  </body>
+</html>

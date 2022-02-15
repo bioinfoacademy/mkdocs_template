@@ -1,0 +1,30 @@
+site_name: scRNA-seq on WT and
+site_description: This page documents everything that has been done/generated in this project
+theme:
+ name: material
+ features: toc.integrate
+ palette:
+  primary: blue
+use_directory_urls: false
+plugins:
+ - search
+ - table-reader
+nav:
+ - Home: 'index.md'
+ - 'Primary Analysis': 'primary-analysis.md'
+ - 'Quality Control': 'quality-control.md'
+ - 'Normalization': 'normalization.md'
+ - 'Clustering': 'clustering.md'
+ - 'Differential Expression': 'differential-expression.md'
+ - 'Annotation': 'annotation.md'
+markdown_extensions:
+ - pymdownx.snippets
+ - admonition
+ - pymdownx.details
+ - pymdownx.superfences
+ - codehilite
+ - attr_list
+extra_css:
+ - stylesheets/extra.css
+
+
